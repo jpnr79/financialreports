@@ -35,7 +35,10 @@ if (!defined("PLUGIN_FINANCIALREPORTS_DIR")) {
    define("PLUGIN_FINANCIALREPORTS_WEBDIR", Plugin::getWebDir("financialreports"));
 }
 
-include_once PLUGIN_FINANCIALREPORTS_DIR . "/vendor/autoload.php";
+// Load Composer autoloader only if present to avoid warnings when deps are missing
+if (file_exists(PLUGIN_FINANCIALREPORTS_DIR . '/vendor/autoload.php')) {
+   require_once PLUGIN_FINANCIALREPORTS_DIR . '/vendor/autoload.php';
+}
 
 // Init the hooks of the plugins -Needed
 function plugin_init_financialreports() {
