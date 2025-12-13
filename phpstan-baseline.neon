@@ -1,0 +1,265 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to an undefined static method Html\:\:showDateField\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: front/financialreport.php
+
+		-
+			message: '#^Call to an undefined static method Session\:\:checkCentralAccess\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: front/financialreport.php
+
+		-
+			message: '#^Call to static method title\(\) on an unknown class Report\.$#'
+			identifier: class.notFound
+			count: 1
+			path: front/financialreport.php
+
+		-
+			message: '#^Call to an undefined static method Session\:\:checkCentralAccess\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: front/report.dynamic.php
+
+		-
+			message: '#^Access to undefined constant Search\:\:CSV_OUTPUT\.$#'
+			identifier: classConstant.notFound
+			count: 1
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Access to undefined constant Search\:\:HTML_OUTPUT\.$#'
+			identifier: classConstant.notFound
+			count: 7
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Access to undefined constant Search\:\:PDF_OUTPUT_LANDSCAPE\.$#'
+			identifier: classConstant.notFound
+			count: 24
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Call to an undefined static method Html\:\:convDate\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 3
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Call to an undefined static method Html\:\:formatNumber\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 5
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Call to an undefined static method Search\:\:showEndLine\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 6
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Call to an undefined static method Search\:\:showFooter\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Call to an undefined static method Search\:\:showHeader\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 3
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Call to an undefined static method Search\:\:showHeaderItem\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 13
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Call to an undefined static method Search\:\:showItem\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 12
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Call to an undefined static method Search\:\:showNewLine\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 6
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$date$#'
+			identifier: variable.undefined
+			count: 31
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$displaydisposal$#'
+			identifier: variable.undefined
+			count: 1
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$displaymonitor$#'
+			identifier: variable.undefined
+			count: 1
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$displaynetworking$#'
+			identifier: variable.undefined
+			count: 1
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$displaynotebook$#'
+			identifier: variable.undefined
+			count: 1
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$displaypc$#'
+			identifier: variable.undefined
+			count: 2
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$displayperipheral$#'
+			identifier: variable.undefined
+			count: 1
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$displayphone$#'
+			identifier: variable.undefined
+			count: 1
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$displayprinter$#'
+			identifier: variable.undefined
+			count: 1
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$displayserver$#'
+			identifier: variable.undefined
+			count: 1
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$header_num$#'
+			identifier: variable.undefined
+			count: 3
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Undefined variable\: \$locations_id$#'
+			identifier: variable.undefined
+			count: 30
+			path: inc/financialreport.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:Cell\(\)\.$#'
+			identifier: method.notFound
+			count: 10
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:GetY\(\)\.$#'
+			identifier: method.notFound
+			count: 13
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:Image\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:Ln\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:PageNo\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:SetFillColor\(\)\.$#'
+			identifier: method.notFound
+			count: 5
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:SetFont\(\)\.$#'
+			identifier: method.notFound
+			count: 8
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:SetMargins\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:SetTextColor\(\)\.$#'
+			identifier: method.notFound
+			count: 3
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:SetX\(\)\.$#'
+			identifier: method.notFound
+			count: 6
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined method PluginFinancialreportsPdf\:\:SetY\(\)\.$#'
+			identifier: method.notFound
+			count: 14
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined static method Html\:\:convDate\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 3
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined static method Html\:\:formatNumber\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 4
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to an undefined static method Toolbox\:\:decodeFromUtf8\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 4
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Call to static method getTextFromHtml\(\) on an unknown class Glpi\\RichText\\RichText\.$#'
+			identifier: class.notFound
+			count: 4
+			path: inc/pdf.class.php
+
+		-
+			message: '#^Method PluginFinancialreportsProfile\:\:migrateOneProfile\(\) should return bool but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: inc/profile.class.php
+
+		-
+			message: '#^Method PluginFinancialreportsProfile\:\:showForm\(\) should return nothing but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: inc/profile.class.php
