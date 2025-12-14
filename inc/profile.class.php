@@ -197,8 +197,8 @@ class PluginFinancialreportsProfile extends CommonDBTM {
          return true;
       }
 
-      foreach ($DB->request('glpi_plugin_financialreports_profiles',
-                            "`profiles_id`='$profiles_id'") as $profile_data) {
+      foreach ($DB->request(['FROM' => 'glpi_plugin_financialreports_profiles',
+                            'WHERE' => ['profiles_id' => $profiles_id]]) as $profile_data) {
 
          $matching       = ['financialreports' => 'plugin_financialreports'];
          $current_rights = ProfileRight::getProfileRights($profiles_id, array_values($matching));
@@ -229,14 +229,16 @@ class PluginFinancialreportsProfile extends CommonDBTM {
       }
 
       //Migration old rights in new ones
-      foreach ($DB->request("SELECT `id` FROM `glpi_profiles`") as $prof) {
+      foreach ($DB->request(['SELECT' => ['id'], 'FROM' => 'glpi_profiles']) as $prof) {
          self::migrateOneProfile($prof['id']);
       }
-      foreach ($DB->request("SELECT *
-                           FROM `glpi_profilerights` 
-                           WHERE `profiles_id`='" . $_SESSION['glpiactiveprofile']['id'] . "' 
-                              AND `name` LIKE '%plugin_financialreports%'") as $prof) {
-         $_SESSION['glpiactiveprofile'][$prof['name']] = $prof['rights'];
+      if (isset($_SESSION['glpiactiveprofile'])) {
+         foreach ($DB->request(['SELECT' => '*',
+                                'FROM' => 'glpi_profilerights',
+                                'WHERE' => ['profiles_id' => $_SESSION['glpiactiveprofile']['id'],
+                                            'name' => ['LIKE', '%plugin_financialreports%']]]) as $prof) {
+            $_SESSION['glpiactiveprofile'][$prof['name']] = $prof['rights'];
+         }
       }
    }
 

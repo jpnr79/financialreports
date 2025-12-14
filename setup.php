@@ -85,7 +85,7 @@ function plugin_version_financialreports() {
       'requirements'   => [
          'glpi' => [
             'min' => '10.0',
-            'max' => '11.0',
+            'max' => '12.0',
             'dev' => false
          ]
       ]

@@ -93,7 +93,9 @@ function plugin_financialreports_install() {
 
    //Migrate profiles to the new system
    PluginFinancialreportsProfile::initProfile();
-   PluginFinancialreportsProfile::createFirstAccess($_SESSION['glpiactiveprofile']['id']);
+   if (isset($_SESSION['glpiactiveprofile'])) {
+      PluginFinancialreportsProfile::createFirstAccess($_SESSION['glpiactiveprofile']['id']);
+   }
 
    $migration = new Migration("2.3.0");
    $migration->dropTable('glpi_plugin_financialreports_profiles');
@@ -129,7 +131,7 @@ function plugin_financialreports_uninstall() {
                    "glpi_plugin_financialreports_parameters"];
 
    foreach ($tables as $table)
-      $DB->query("DROP TABLE IF EXISTS `$table`;");
+      $DB->dropTable($table, true);
 
    //old versions	
    $tables = ["glpi_plugin_financialreports_profiles",
@@ -139,7 +141,7 @@ function plugin_financialreports_uninstall() {
                    "glpi_plugin_state_repelled"];
 
    foreach ($tables as $table)
-      $DB->query("DROP TABLE IF EXISTS `$table`;");
+      $DB->dropTable($table, true);
 
    //Delete rights associated with the plugin
    $profileRight = new ProfileRight();

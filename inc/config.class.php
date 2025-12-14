@@ -39,85 +39,83 @@ class PluginFinancialreportsConfig extends CommonDBTM {
 
    public static $rightname = 'plugin_financialreports';
 
-   static function canPurge() {
+   static function canPurge(): bool {
       return Session::haveRight(self::$rightname, READ);
    }
 
    function showConfigForm() {
       global $DB;
 
-      $query = "SELECT * FROM
-               `" . $this->getTable() . "`
-               ORDER BY `states_id` ASC";
+      $result = $DB->request([
+         'FROM' => $this->getTable(),
+         'ORDER' => 'states_id ASC'
+      ]);
 
       $used = [];
 
-      if ($result = $DB->query($query)) {
-         $number = $DB->numrows($result);
-         if ($number != 0) {
+      $number = count($result);
+      if ($number != 0) {
 
-            $rand = mt_rand();
-            echo "<div align='left'>";
-            Html::openMassiveActionsForm('mass' . __CLASS__ . $rand);
-            $massiveactionparams = ['item'             => __CLASS__,
-                                    'specific_actions' => ['purge' => _x('button', 'Delete permanently')],
-                                    'container'        => 'mass' . __CLASS__ . $rand];
-            Html::showMassiveActions($massiveactionparams);
+         $rand = mt_rand();
+         echo "<div align='left'>";
+         Html::openMassiveActionsForm('mass' . __CLASS__ . $rand);
+         $massiveactionparams = ['item'             => __CLASS__,
+                                 'specific_actions' => ['purge' => _x('button', 'Delete permanently')],
+                                 'container'        => 'mass' . __CLASS__ . $rand];
+         Html::showMassiveActions($massiveactionparams);
 
-            echo "<table class='tab_cadre_fixe' cellpadding='5'>";
-            echo "<tr>";
-            echo "<th>" . Html::getCheckAllAsCheckbox('mass' . __CLASS__ . $rand) . "</th>";
-            echo "<th>" . __('Status') . "</th>";
+         echo "<table class='tab_cadre_fixe' cellpadding='5'>";
+         echo "<tr>";
+         echo "<th>" . Html::getCheckAllAsCheckbox('mass' . __CLASS__ . $rand) . "</th>";
+         echo "<th>" . __('Status') . "</th>";
+         echo "</tr>";
+         foreach ($result as $ligne) {
+            $used[$ligne["states_id"]] = $ligne["states_id"];
+
+            echo "<tr class='tab_bg_1'>";
+            echo "<td width='10'>";
+            echo Html::showMassiveActionCheckBox(__CLASS__, $ligne["id"]);
+            echo "</td>";
+            echo "<td>" . Dropdown::getDropdownName("glpi_states", $ligne["states_id"]) . "</td>";
             echo "</tr>";
-            while ($ligne = $DB->fetchArray($result)) {
-               $used[$ligne["states_id"]] = $ligne["states_id"];
-
-               echo "<tr class='tab_bg_1'>";
-               echo "<td width='10'>";
-               echo Html::showMassiveActionCheckBox(__CLASS__, $ligne["id"]);
-               echo "</td>";
-               echo "<td>" . Dropdown::getDropdownName("glpi_states", $ligne["states_id"]) . "</td>";
-               echo "</tr>";
-            }
-            echo "</table></div>";
-
-            $massiveactionparams['ontop'] = false;
-            Html::showMassiveActions($massiveactionparams);
-            Html::closeForm();
-
-            echo "<div align='center'><form method='post' action='" . $this->getFormURL() . "'>";
-            echo "<table class='tab_cadre_fixe' cellpadding='5'><tr ><th colspan='2'>";
-            echo __('Disposal status', 'financialreports') . "</th></tr>";
-            echo "<tr class='tab_bg_1'><td>";
-            Dropdown::show('State', ['name'  => "states_id",
-                                          'used'  => $used,
-//                                          'value' => $ligne["states_id"]
-            ]
-            );
-            echo "</td>";
-            echo "<td>";
-            echo "<div align='center'>";
-            echo Html::submit(_sx('button', 'Post'), ['name' => 'add_state', 'class' => 'btn btn-primary']);
-            echo "</div></td></tr>";
-            echo "</table>";
-            Html::closeForm();
-            echo "</div>";
-
-         } else {
-            echo "<div align='center'><form method='post' action='" . $this->getFormURL() . "'>";
-            echo "<table class='tab_cadre' cellpadding='5'><tr ><th colspan='2'>";
-            echo __('Disposal status', 'financialreports') . " : </th></tr>";
-            echo "<tr class='tab_bg_1'><td>";
-            Dropdown::show('State', ['name' => "states_id"]);
-            echo "</td>";
-            echo "<td>";
-            echo "<div align='center'>";
-            echo Html::submit(_sx('button', 'Post'), ['name' => 'add_state', 'class' => 'btn btn-primary']);
-            echo "</div></td></tr>";
-            echo "</table>";
-            Html::closeForm();
-            echo "</div>";
          }
+         echo "</table></div>";
+
+         $massiveactionparams['ontop'] = false;
+         Html::showMassiveActions($massiveactionparams);
+         Html::closeForm();
+
+         echo "<div align='center'><form method='post' action='" . $this->getFormURL() . "'>";
+         echo "<table class='tab_cadre_fixe' cellpadding='5'><tr ><th colspan='2'>";
+         echo __('Disposal status', 'financialreports') . "</th></tr>";
+         echo "<tr class='tab_bg_1'><td>";
+         Dropdown::show('State', ['name'  => "states_id",
+                                       'used'  => $used,
+//                                          'value' => $ligne["states_id"]
+         ]
+         );
+         echo "</td>";
+         echo "<td>";
+         echo "<div align='center'>";
+         echo Html::submit(_sx('button', 'Post'), ['name' => 'add_state', 'class' => 'btn btn-primary']);
+         echo "</div></td></tr>";
+         echo "</table>";
+         Html::closeForm();
+         echo "</div>";
+      } else {
+         echo "<div align='center'><form method='post' action='" . $this->getFormURL() . "'>";
+         echo "<table class='tab_cadre' cellpadding='5'><tr ><th colspan='2'>";
+         echo __('Disposal status', 'financialreports') . " : </th></tr>";
+         echo "<tr class='tab_bg_1'><td>";
+         Dropdown::show('State', ['name' => "states_id"]);
+         echo "</td>";
+         echo "<td>";
+         echo "<div align='center'>";
+         echo Html::submit(_sx('button', 'Post'), ['name' => 'add_state', 'class' => 'btn btn-primary']);
+         echo "</div></td></tr>";
+         echo "</table>";
+         Html::closeForm();
+         echo "</div>";
       }
    }
 
