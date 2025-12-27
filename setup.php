@@ -32,7 +32,7 @@ define('PLUGIN_FINANCIALREPORTS_VERSION', '3.0.0');
 if (!defined("PLUGIN_FINANCIALREPORTS_DIR")) {
    define("PLUGIN_FINANCIALREPORTS_DIR", Plugin::getPhpDir("financialreports"));
    define("PLUGIN_FINANCIALREPORTS_NOTFULL_DIR", Plugin::getPhpDir("financialreports",false));
-   define("PLUGIN_FINANCIALREPORTS_WEBDIR", Plugin::getWebDir("financialreports"));
+   define("PLUGIN_FINANCIALREPORTS_WEBDIR", "/plugins/financialreports/");
 }
 
 // Load Composer autoloader only if present to avoid warnings when deps are missing
